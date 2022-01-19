@@ -11,6 +11,6 @@ export const getQuote = () => dispatch => {
       dispatch({ type: GET_QUOTE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_QUOTE_ERROR, payload: err});
+      dispatch({ type: GET_QUOTE_ERROR, payload: err.response.data.message});
     })
 }

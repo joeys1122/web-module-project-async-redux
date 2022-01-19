@@ -4,18 +4,21 @@ import { connect } from 'react-redux';
 import { getQuote } from '../actions';
 
 const Quote = props => {
-  const { quote, isFetching, error } = props;
+  const { quote, isFetching, error, getQuote } = props;
+
   const handleClick = () => {
-    props.getQuote();
+    getQuote();
   }
 
   return (
     <div className="Quote">
-      <button onClick={handleClick}>Generate A Random Quote!</button>
-      {isFetching && <p>Generating Quote...</p>}
-      {quote.content && <p>"{quote.content}"</p>}
-      {quote.originator.name && <p>-{quote.originator.name}</p>}
-      {error && <p>ERROR: {error}</p>}
+      <button onClick={handleClick}>Get A Random Quote!</button>
+      <div className="Quote-Content">
+        {isFetching && <p>Getting Quote...</p>}
+        {quote.content && <p>"{quote.content}"</p>}
+        {quote.originator.name && <p>-{quote.originator.name}</p>}
+        {error && <p className='Error'>ERROR: {error}</p>}
+      </div>
     </div>
   );
 }
